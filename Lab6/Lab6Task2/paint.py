@@ -37,17 +37,13 @@ class paintWindow(QWidget):
         super().__init__(None)
         self.setWindowTitle("A Simple Paint Program")
         self.paintArea = drawingFrame(self)
-
         self.paintArea.setMinimumSize(600, 400)
-
+        self.label = QLabel("Drag mouse to draw")
+        self.label.setAlignment(Qt.AlignCenter)
         self.layout = QVBoxLayout()
         self.layout.addWidget(self.paintArea)
-        self.layout.addWidget(self.instruction)
-        self.layout.addWidget(self.clearButton)
-
+        self.layout.addWidget(self.label)
         self.setLayout(self.layout)
-
-
 
 def main():
     app = QApplication(sys.argv)
