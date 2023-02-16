@@ -12,7 +12,6 @@ class drawingFrame(QFrame):
     
     def mousePressEvent(self, event: QMouseEvent) -> None:
         self.isDrawing = True
-        print("click")
 
     def mouseReleaseEvent(self, event: QMouseEvent) -> None:
         self.isDrawing = False
@@ -37,15 +36,23 @@ class paintWindow(QWidget):
         super().__init__(None)
         self.setWindowTitle("A Simple Paint Program")
         self.paintArea = drawingFrame(self)
+        self.clearButton = QPushButton('Clear')
 
         self.paintArea.setMinimumSize(600, 400)
 
+        self.clearButton.clicked.connect(self.clear)
+
         self.layout = QVBoxLayout()
         self.layout.addWidget(self.paintArea)
-        self.layout.addWidget(self.instruction)
+        # self.layout.addWidget(self.instruction)
         self.layout.addWidget(self.clearButton)
 
         self.setLayout(self.layout)
+
+    def clear(self):
+        self.paintArea.drawing.clear()
+        self.repaint()
+        print("ji")
 
 
 
