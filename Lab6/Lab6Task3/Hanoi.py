@@ -1,3 +1,6 @@
+from HanoiDisk import *
+from HonoiPole import *
+
 class Hanoi(object):
 
     def __init__(self, n=3, start='A', workspace='B', destination='C'):

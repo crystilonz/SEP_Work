@@ -15,8 +15,11 @@ class Disk(object):
 
     def newpos(self, xpos, ypos):
         t.goto(xpos, ypos)
+        self.dxpos = xpos
+        self.dypos = ypos
 
     def cleardisk(self):
+        t.goto(self.dxpos, self.dypos)
         t.color("white")
         self.__turtleDraw()
         t.color("black")

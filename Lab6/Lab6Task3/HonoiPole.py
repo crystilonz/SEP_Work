@@ -27,18 +27,20 @@ class Pole(object):
         forward(self.pthick/2)
 
         setheading(0)
+        penup()
 
-    def pushdisk(self, Disk: Disk):
-        self.stack.append(Disk)
-        Disk.cleardisk()
+    def pushdisk(self, D: Disk):
+        self.stack.append(D)
+        D.newpos(self.pxpos, self.pypos + (D.dheight * self.toppos + self.toppos))
+        D.showdisk()
 
-        Disk.newpos(self.pxpos, self.pypos - Disk.dheight * self.toppos)
-        Disk.showdisk()
+        self.toppos += 1
 
     def popdisk(self):
-        return self.stack.pop()
+        self.toppos -= 1
+        d = self.stack.pop()
+        d.cleardisk()
+        return d
+    
         
-
-w = Pole("x",0,0).showpole()
-done()
         
