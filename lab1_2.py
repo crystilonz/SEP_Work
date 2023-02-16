@@ -25,10 +25,26 @@ class Simple_drawing_window(QWidget):
         p.drawPixmap(QRect(200, 100, 320, 320), self.rabbit)
         p.end()
 
+class Simple_drawing_window3(QWidget):
+    def __init__(self):
+        QWidget.__init__(self, None)
+        self.setWindowTitle('Simple Drawing')
+        self.ant = QPixmap('images/ant.png')
+
+    def paintEvent(self, e):
+        p = QPainter()
+        p.begin(self)
+
+        p.setPen(QColor(0,0,0))
+        p.setBrush(QColor("red"))
+        p.drawRect(100,100,50,50)
+
+        p.drawPixmap(QRect(200, 100, 320, 320), self.ant)
+        p.end()
 def main():
     app = QApplication(sys.argv)
 
-    w = Simple_drawing_window()
+    w = Simple_drawing_window3()
     w.show()
 
     return app.exec()
