@@ -17,20 +17,21 @@ class Simple_drawing_window1(QWidget):
         p.end()
 
 class Simple_drawing_window3(QWidget):
-    def __init__(self):
-        QWidget.__init__(self, None)
-        self.setWindowTitle('Simple Drawing')
-        self.ant = QPixmap('images/ant.png')
+     def __init__(self):
+         QWidget.__init__(self, None)
+         self.setWindowTitle('Simple Drawing')
+         self.ant = QPixmap('images/ant.png')
 
-    def paintEvent(self, e):
-        p = QPainter()
-        p.begin(self)
+     def paintEvent(self, e):
+         p = QPainter()
+         p.begin(self)
 
-        p.setPen(QColor(0,0,0))
-        p.setBrush(QColor("red"))
-        p.drawRect(100,100,50,50)
-        p.end()
+         p.setPen(QColor(0,0,0))
+         p.setBrush(QColor("red"))
+         p.drawRect(100,100,50,50)
 
+         p.drawPixmap(QRect(200, 100, 320, 320), self.ant)
+         p.end()
 
 class Simple_drawing_window2(QWidget):
     def __init__(self):
@@ -49,10 +50,7 @@ class Simple_drawing_window2(QWidget):
         p.drawPixmap(QRect(500, 100, 400, 400), self.cat)
         p.end()
 
-
-        p.drawPixmap(QRect(200, 100, 320, 320), self.ant)
-        p.end()
-        
+    
 def main():
     app = QApplication(sys.argv)
 
