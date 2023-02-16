@@ -42,19 +42,19 @@ class paintWindow(QWidget):
 
         self.clearButton.clicked.connect(self.clear)
 
+        self.paintArea.setMinimumSize(600, 400)
+        self.label = QLabel("Drag mouse to draw")
+        self.label.setAlignment(Qt.AlignCenter)
         self.layout = QVBoxLayout()
         self.layout.addWidget(self.paintArea)
-        # self.layout.addWidget(self.instruction)
+        self.layout.addWidget(self.label)
         self.layout.addWidget(self.clearButton)
-
         self.setLayout(self.layout)
-
+        
+        
     def clear(self):
         self.paintArea.drawing.clear()
         self.repaint()
-        print("ji")
-
-
 
 def main():
     app = QApplication(sys.argv)
