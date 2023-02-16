@@ -1,5 +1,5 @@
 from turtle import *
-# from HanoiDisk import Disk
+from HanoiDisk import Disk
 class Pole(object):
     def __init__(self, name="",xpos=0,ypos=0,thick=10,length=100):
         self.pname = name
@@ -28,9 +28,16 @@ class Pole(object):
 
         setheading(0)
 
-    def pushdisk(Disk):
-        
+    def pushdisk(self, Disk: Disk):
+        self.stack.append(Disk)
+        Disk.cleardisk()
 
+        Disk.newpos(self.pxpos, self.pypos - Disk.dheight * self.toppos)
+        Disk.showdisk()
+
+    def popdisk(self):
+        return self.stack.pop()
+        
 
 w = Pole("x",0,0).showpole()
 done()
